@@ -1,6 +1,6 @@
 const prompts = require('prompts');
 import Charactere from "./charactere";
-import Ennemy from "./ennemy";
+import Enemy from "./enemy";
 
 
 const createCharactere = [
@@ -28,17 +28,21 @@ const fight = [
         name: 'fight',
         message: 'Vous voulez combattre ?',
         choices: [
-            { title: 'Oui', value: 'fight'},
-            { title: 'Non', value: 'fight'}
+            { title: 'Oui', value: 1},
+            { title: 'Non', value: 2}
         ],
     },
 ];
 
+
 (async () => {
     const response = await prompts(createCharactere);
     let newCharacter = new Charactere(response.name, response.gender);
-    console.log('vos pv: ' + newCharacter.lifeLevel + '\n' + newCharacter.summary());
-    console.log('ennemi en approche!!!')
-    
+    console.log('vos pv: ' + newCharacter.lifeLevel);
+    newCharacter.summary();
+    console.log('ennemi en approche!!!');
+    const moove = await prompts(fight)
+
+
 
 })();
